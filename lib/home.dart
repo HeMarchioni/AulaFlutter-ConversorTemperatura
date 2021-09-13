@@ -36,6 +36,8 @@ class ConversorTemp extends StatefulWidget {
 class _ConversorTempState extends State<ConversorTemp> {
 
   int _radioValue1 = 0;
+  var valorConvert = "top demais";
+
 
 
   void _handleRadioValueChange1(int? value) {
@@ -54,6 +56,9 @@ class _ConversorTempState extends State<ConversorTemp> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
 
         children:[
+
+          // -> ================================================== Texto Principal
+
           Text('Digite a Temperatura',
             textAlign: TextAlign.center,
             style: TextStyle(fontSize:35.0,
@@ -62,6 +67,14 @@ class _ConversorTempState extends State<ConversorTemp> {
                 fontFamily: "Roboto"
             ),
           ),
+
+
+
+
+
+          // ==============================================================-> Entrada de valor
+
+
           Padding(
               padding: const EdgeInsets.fromLTRB(50,10,50,10),
               child:
@@ -77,6 +90,13 @@ class _ConversorTempState extends State<ConversorTemp> {
                     fontFamily: "Roboto"),
               )
           ),
+
+
+
+
+
+          //======================================================= -> Linha dos Radios Button
+
           Padding(
             padding: const EdgeInsets.fromLTRB(10,10,10,10),
             child:Row(
@@ -119,8 +139,58 @@ class _ConversorTempState extends State<ConversorTemp> {
                 ),
               ],
             ),
+          ),
 
-          )
+
+
+          //===================================================== --> Botão Conversão
+
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10,10,10,10),
+            child:Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // Respond to button press
+                      },
+                      child: Text("CONVERTER"),
+                    ),
+                  ),
+                ]
+            ),
+          ),
+
+
+          //===================================================== --> Lista das respostas
+
+
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(50,10,10,10),
+                child: ListTile(
+                  title: Text(''),
+                  leading: Icon(Icons.arrow_forward),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.fromLTRB(50,10,10,10),
+                child: ListTile(
+                  title: Text(''),
+                  leading: Icon(Icons.arrow_forward),
+            ),
+          ),
+            ],
+          ),
+
+
         ]
     );
 
