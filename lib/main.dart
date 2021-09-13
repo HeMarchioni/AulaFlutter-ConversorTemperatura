@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         primarySwatch: Colors.deepOrange,
         primaryColor: Colors.black,
-        canvasColor: Colors.yellow.shade50,
+        canvasColor: Color(0xff343131),
       ),
       home: Home(),
     );
