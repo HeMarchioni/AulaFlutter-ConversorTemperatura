@@ -52,38 +52,39 @@ class _ConversorTempState extends State<ConversorTemp> {
   void coversor(){
     double temp = double.parse(entradaTemp.text);
 
-    switch (_radioValue1) {
-      case 0:  // -> se for celsius
+    setState(() {
+      switch (_radioValue1) {
+        case 0: // -> se for celsius
 
-        tempV1 = (1.8 * temp + 32).toStringAsFixed(2);
-        tempV1+= " Graus Fahrenheit";
+          tempV1 = (1.8 * temp + 32).toStringAsFixed(2);
+          tempV1 += " °F Graus Fahrenheit";
 
-        tempV2 = (temp + 273.15).toStringAsFixed(2);
-        tempV2+= " Graus Kelvin";
+          tempV2 = (temp + 273.15).toStringAsFixed(2);
+          tempV2 += " K Graus Kelvin";
 
-        break;
+          break;
 
-      case 1:  // -> se for Fahrenheit
+        case 1: // -> se for Fahrenheit
 
-        tempV1 = ((temp - 32) / 1.8).toStringAsFixed(2);
-        tempV1+= " Graus Celsius";
+          tempV1 = ((temp - 32) / 1.8).toStringAsFixed(2);
+          tempV1 += " °C Graus Celsius";
 
-        tempV2 = ((temp - 32) / 1.8 + 273.15).toStringAsFixed(2);
-        tempV2+= " Graus Kelvin";
+          tempV2 = ((temp - 32) / 1.8 + 273.15).toStringAsFixed(2);
+          tempV2 += " K Graus Kelvin";
 
-        break;
+          break;
 
-      case 2:  // -> se for Kelvin
+        case 2: // -> se for Kelvin
 
-        tempV1 = (temp - 273.15).toStringAsFixed(2);
-        tempV1+= " Graus Celsius";
+          tempV1 = (temp - 273.15).toStringAsFixed(2);
+          tempV1 += " °C Graus Celsius";
 
-        tempV2 = ((temp - 273.15) *1.8 + 32).toStringAsFixed(2);
-        tempV2+= " Graus Fahrenheit";
+          tempV2 = ((temp - 273.15) * 1.8 + 32).toStringAsFixed(2);
+          tempV2 += " °F Graus Fahrenheit";
 
-        break;
-    }
-
+          break;
+      }
+    });
 
   }
 
