@@ -4,57 +4,140 @@ import 'package:flutter/material.dart';
 
 
 
-class Home extends StatefulWidget {
+class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
   @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+        appBar: AppBar(
         centerTitle: true,
         title: Text('Conversor de Temperatura'),
 
-      ) ,
+    ),
 
-      body:
-        Container(
-          child:
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-
-                children:[
-                  Text('Digite a Temperatura',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize:35.0,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xffffffff),
-                        fontFamily: "Roboto"
-                    ),
-                  ),
-
-                  TextField(
-                    keyboardType: TextInputType.number,  // -> teclado que ira aparecer para inserir na caixa de texto input
-                      //controller: tempVal,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Temperatura'),
-                      style: TextStyle(fontSize:32.0,
-                        color: const Color(0xFF9C1313),
-                        fontWeight: FontWeight.w400,
-                        fontFamily: "Roboto"),
-                  )
-
-                ]
-            ),
-        ),
-
+    body: const ConversorTemp(),
     );
   }
 }
+
+
+
+
+
+
+class ConversorTemp extends StatefulWidget {
+  const ConversorTemp({Key? key}) : super(key: key);
+
+  @override
+  _ConversorTempState createState() => _ConversorTempState();
+}
+
+class _ConversorTempState extends State<ConversorTemp> {
+
+  int _radioValue1 = 0;
+
+
+  void _handleRadioValueChange1(int? value) {
+    setState(() {
+      _radioValue1 = value!;
+    });
+  }
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+
+        children:[
+          Text('Digite a Temperatura',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize:35.0,
+                fontWeight: FontWeight.w500,
+                color: const Color(0xffffffff),
+                fontFamily: "Roboto"
+            ),
+          ),
+          Padding(
+              padding: const EdgeInsets.fromLTRB(50,10,50,10),
+              child:
+              TextField(
+                keyboardType: TextInputType.number,  // -> teclado que ira aparecer para inserir na caixa de texto input
+                //controller: tempVal,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Temperatura'),
+                style: TextStyle(fontSize:32.0,
+                    color: const Color(0xFFDB9430),
+                    fontWeight: FontWeight.w400,
+                    fontFamily: "Roboto"),
+              )
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10,10,10,10),
+            child:Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                new Radio(
+                  value: 0,
+                  groupValue: _radioValue1,
+                  onChanged: _handleRadioValueChange1,
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0,0,30,0),
+                  child: new Text(
+                    'Celsius °C',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ),
+                new Radio(
+                  value: 1,
+                  groupValue: _radioValue1,
+                  onChanged: _handleRadioValueChange1,
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0,0,30,0),
+                  child: new Text(
+                    'Fahrenheit °F',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                ),
+                new Radio(
+                  value: 2,
+                  groupValue: _radioValue1,
+                  onChanged: _handleRadioValueChange1,
+                ),
+                new Text(
+                  'kelvin K',
+                  style: new TextStyle(fontSize: 16.0),
+                ),
+              ],
+            ),
+
+          )
+        ]
+    );
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
